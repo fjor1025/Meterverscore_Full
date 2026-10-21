@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theappname">[MY-NAME]</string>
+
+    <string name="emptyname">  </string>
+    <string name="Copyrights">© 2025 [MY-NAME]. All rights reserved.</string>
+</resources>

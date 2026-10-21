@@ -1,0 +1,37 @@
+## Visual Studio configuration & caches
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## WebView2 / Embedded Browser cache and logs
+*.exe.WebView2/
+EBWebView/
+Crashpad/
+*.log
+*.dat
+
+## NuGet Packages
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Android / APK builds and caches
+.gradle/
+build/
+captures/
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+
+## Local runtime databases & dynamics
+database/*.db-journal
+database/*.db-wal

@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'stringfog'
+
+// 导入RandomKeyGenerator类，如果使用HardCodeKeyGenerator，更换下类名
+import com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator
+import com.github.megatronking.stringfog.plugin.StringFogMode
+
+stringfog {
+    // 必要：加解密库的实现类路径，需和上面配置的加解密算法库一致。
+    implementation 'com.github.megatronking.stringfog.xor.StringFogImpl'
+    // 可选：StringFog会自动尝试获取packageName，如果遇到获取失败的情况，可以显式地指定。
+    packageName 'com.github.megatronking.stringfog.app'
+    // 可选：加密开关，默认开启。
+    enable true
+    // 可选：指定需加密的代码包路径，可配置多个，未指定将默认全部加密。
+    fogPackages = ['com.appd.instll']
+    // 可选（3.0版本新增）：指定密钥生成器，默认使用长度8的随机密钥（每个字符串均有不同随机密钥）,
+    // 也可以指定一个固定的密钥：HardCodeKeyGenerator("This is a key")
+    kg new RandomKeyGenerator()
+    // 可选（4.0版本新增）：用于控制字符串加密后在字节码中的存在形式, 默认为base64，
+    // 也可以使用text或者bytes
+    mode StringFogMode.bytes
+}
+
+android {
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    namespace 'com.appd.instll'
+    compileSdkVersion 34
+   // buildToolsVersion '29.0.3'
+    buildTypes {
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    defaultConfig {
+
+        flavorDimensions "payload"
+        applicationId "com.appd.instll"
+        minSdkVersion 21
+        //noinspection EditedTargetSdkVersion,ExpiredTargetSdkVersion
+        targetSdkVersion 34
+        versionCode 331165
+        versionName "3.31.165"
+
+        //    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+    }
+//    productFlavors {
+//        payload{
+//            applicationIdSuffix ".load"
+//        }
+//    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    //noinspection GradleCompatible,GradleCompatible
+    implementation 'com.android.support:support-compat:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+   // implementation "androidx.activity:activity:1.4.0"
+  //  implementation "androidx.fragment:fragment:1.4.0"
+
+    // implementation 'com.writingminds:FFmpegAndroid:0.3.2'
+    //implementation 'org.eclipse.jetty:jetty-server:11.0.6'
+//    implementation ('org.littleshoot:littleproxy:1.1.2'){
+//        exclude group: 'com.barchart.udt', module: 'barchart-udt-bundle'
+//    }
+    //implementation 'com.github.ganskef:littleproxy-mitm:1.1.0'
+    //implementation 'com.github.XomaDev:MIUI-autostart:master-SNAPSHOT'
+    //implementation 'com.google.android.material:material:1.1.0-alpha09'
+   // implementation 'com.google.firebase:firebase-auth:19.2.0'
+    // implementation 'com.github.XomaDev:MIUI-autostart:master-SNAPSHOT'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:25.0.0'
+    implementation 'com.github.megatronking.stringfog:xor:5.0.0'
+}
+
+
+
+

